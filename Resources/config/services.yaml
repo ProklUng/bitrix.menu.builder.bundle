@@ -26,7 +26,7 @@ services:
       - '@bitrix_menu_bundle.reflection_processor'
       - []
       - '%kernel.environment%'
-      - '%kernel.project_dir%/bitrix_menu_bundle.cache_dir'
+      - '%kernel.project_dir%/bitrix/bitrix_menu_bundle.cache_dir'
 
   Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCached: '@bitrix_menu_bundle.manager_cached'
 
