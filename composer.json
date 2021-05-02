@@ -1,0 +1,33 @@
+{
+    "name": "proklung/bitrix-menu-builder-bundle",
+    "description": "Bitrix menu builder bundle for Symfony + Bitrix",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gavrilov Fedy",
+            "email": "fedor.gavrilov.75@mail.ru",
+            "homepage": "https://github.com/ProklUng"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ProklUng/bitrix.menu.builder/issues",
+        "source": "https://github.com/ProklUng/bitrix.menu.builder"
+    },
+    "autoload": {
+        "psr-4": {
+            "Prokl\\BitrixMenuBuilderBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "Tests/"
+        ]
+    },
+    "require": {
+        "php": ">=7.1",
+        "symfony/dependency-injection": "^3.4 || ^4.0 || ^5.0",
+        "symfony/http-kernel": "^4.0 || ^5.0",
+        "symfony/config": "~4|~5",
+        "proklung/cache-proxificator": "^1.1",
+        "webarchitect609/bitrix-cache": "^1.6"
+    }
+}

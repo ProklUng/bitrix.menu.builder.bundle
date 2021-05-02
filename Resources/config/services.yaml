@@ -1,0 +1,33 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  bitrix_menu_bundle.cacher:
+    public: false
+    class: WebArch\BitrixCache\AntiStampedeCacheAdapter
+    arguments: ['/', '%bitrix_menu_bundle.ttl_cache%', '%bitrix_menu_bundle.cache_dir%']
+
+  bitrix_menu_bundle.reflection_processor:
+    public: false
+    class: Prokl\CacheProxificator\ReflectionProcessor
+
+  bitrix_menu_bundle.manager:
+    class: Prokl\BitrixMenuBuilderBundle\Services\MenuManager
+
+  Prokl\BitrixMenuBuilderBundle\MenuManager: '@bitrix_menu_bundle.manager'
+
+  bitrix_menu_bundle.manager_cached:
+    class: Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCached
+    arguments:
+      - '@bitrix_menu_bundle.manager'
+      - '@bitrix_menu_bundle.cacher'
+      - '@bitrix_menu_bundle.reflection_processor'
+      - []
+      - '%kernel.environment%'
+      - '%kernel.project_dir%/bitrix_menu_bundle.cache_dir'
+
+  Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCached: '@bitrix_menu_bundle.manager_cached'
+
+  Prokl\BitrixMenuBuilderBundle\Services\IblockTree: ~
