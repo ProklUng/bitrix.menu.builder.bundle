@@ -11,8 +11,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/ProklUng/bitrix.menu.builder/issues",
-        "source": "https://github.com/ProklUng/bitrix.menu.builder"
+        "issues": "https://github.com/ProklUng/bitrix.menu.builder.bundle/issues",
+        "source": "https://github.com/ProklUng/bitrix.menu.builder.bundle"
     },
     "autoload": {
         "psr-4": {
