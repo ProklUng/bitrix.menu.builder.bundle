@@ -14,7 +14,7 @@
 
 1) Сервис `bitrix_menu_bundle.manager` (он же `Prokl\BitrixMenuBuilderBundle\Services\MenuManager`)
 2) Кэширующее прокси - `bitrix_menu_bundle.manager_cached` (он же `Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCached`)
-3) Фасад - `Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCachedFacade`. Если подключен соответствующий бандл.
+3) Фасад - `Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCachedFacade`. Если подключен соответствующий [бандл](https://github.com/ProklUng/facade.bundle).
 
 Время жизни кэша и директория управляются в конфигурации бандла (`/local/config/packages/bitrix-menu-builder.yaml`) ключами
 `ttl_cache` и `cache_dir` (относительно папки `bitrix`). 
