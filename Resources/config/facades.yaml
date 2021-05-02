@@ -5,3 +5,4 @@ services:
     public: true
 
   Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCachedFacade: ~
+  Prokl\BitrixMenuBuilderBundle\Services\MenuManagerFacade: ~

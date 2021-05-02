@@ -9,7 +9,7 @@ use Prokl\FacadeBundle\Services\AbstractFacade;
  * @package Prokl\BitrixMenuBuilderBundle
  *
  */
-class MenuManagerCachedFacade extends AbstractFacade
+class MenuManagerFacade extends AbstractFacade
 {
     /**
      * Сервис фасада.
@@ -18,6 +18,6 @@ class MenuManagerCachedFacade extends AbstractFacade
      */
     protected static function getFacadeAccessor() : string
     {
-        return 'bitrix_menu_bundle.manager_cached';
+        return 'bitrix_menu_bundle.manager';
     }
 }

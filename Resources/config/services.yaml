@@ -16,7 +16,7 @@ services:
   bitrix_menu_bundle.manager:
     class: Prokl\BitrixMenuBuilderBundle\Services\MenuManager
 
-  Prokl\BitrixMenuBuilderBundle\MenuManager: '@bitrix_menu_bundle.manager'
+  Prokl\BitrixMenuBuilderBundle\Services\MenuManager: '@bitrix_menu_bundle.manager'
 
   bitrix_menu_bundle.manager_cached:
     class: Prokl\BitrixMenuBuilderBundle\Services\MenuManagerCached
