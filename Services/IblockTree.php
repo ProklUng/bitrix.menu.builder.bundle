@@ -35,18 +35,6 @@ class IblockTree
     }
 
     /**
-     * @param integer $iblockId
-     *
-     * @return $this
-     */
-    public function setIblockId(int $iblockId): self
-    {
-        $this->iblockId = $iblockId;
-
-        return $this;
-    }
-
-    /**
      * Собрать дерево, включающее элементы.
      *
      * @return array
@@ -63,14 +51,26 @@ class IblockTree
     }
 
     /**
+     * @param integer $iblockId
+     *
+     * @return $this
+     */
+    public function setIblockId(int $iblockId): self
+    {
+        $this->iblockId = $iblockId;
+
+        return $this;
+    }
+
+    /**
      * Получить данные об элементах меню.
      *
-     * @param integer $iblockId  ID инфоблока.
-     * @param integer $sectionId ID секции инфоблока.
+     * @param integer         $iblockId  ID инфоблока.
+     * @param integer|boolean $sectionId ID секции инфоблока.
      *
      * @return array
      */
-    private function getItems(int $iblockId, int $sectionId): array
+    private function getItems(int $iblockId, $sectionId): array
     {
         $arItems = [];
 
@@ -79,15 +79,17 @@ class IblockTree
             ['IBLOCK_ID' => $iblockId, 'IBLOCK_SECTION_ID' => $sectionId, 'ACTIVE' => 'Y'],
             false,
             false,
-            ['NAME', 'IBLOCK_SECTION_ID', 'PROPERTY_WEIGHT', 'PREVIEW_TEXT']
+            []
         );
 
         while ($ob = $res->GetNextElement()) {
             $arFields = $ob->GetFields();
+            $props = $ob->GetProperties();
 
             $arItems[] = [
                 'NAME' => $arFields['NAME'],
-                'PREVIEW_TEXT' => $arFields['PREVIEW_TEXT'],
+                'PROPERTIES' => $props,
+                'FIELDS' => $arFields,
             ];
         }
 
@@ -126,6 +128,8 @@ class IblockTree
 
         while ($arSection = $section->GetNext(true, false)) {
             $arPush = $arSection;
+            // Костылинг - уравнять элементы и разделы по параметрам.
+            $arPush['DETAIL_PAGE_URL'] = $arPush['SECTION_PAGE_URL'];
 
             // Подмес элементов (если они существуют)
             $arItems = $this->getItems($iblockId, $arSection['ID']);
@@ -162,6 +166,10 @@ class IblockTree
                 return ($a['SORT'] < $b['SORT']) ? -1 : 1;
             }
         );
+
+        // Элементы без подразделов.
+        $rootElements = $this->getItems($iblockId, false);
+        $arSectionList = array_merge($arSectionList, $rootElements);
 
         $this->arTree = $arSectionList; // Результат.
     }

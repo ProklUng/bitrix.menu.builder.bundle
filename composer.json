@@ -29,5 +29,13 @@
         "symfony/config": "~4|~5",
         "proklung/cache-proxificator": "^1.1",
         "webarchitect609/bitrix-cache": "^1.6"
+    },
+    "require-dev": {
+        "proklung/bitrix-phpunit-testing-tools": "^1.0"
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/sheerockoff/bitrix-ci/files/bitrix/modules/{$name}/": ["type:bitrix-module"]
+        }
     }
 }

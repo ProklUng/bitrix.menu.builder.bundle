@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="3"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    allowStringToStandInForClass="true"
+    allowCoercionFromStringToClassConst="true"
+    findUnusedPsalmSuppress="true"
+    skipChecksOnUnresolvableIncludes="true"
+>
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+        <pluginClass class="Psalm\MockeryPlugin\Plugin"/>
+    </plugins>
+    <projectFiles>
+        <directory name="/"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+            <directory name="bitrix/modules/sprint.migration"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <extraFiles>
+        <directory name="vendor/sheerockoff/bitrix-ci/files/bitrix"/>
+    </extraFiles>
+
+    <issueHandlers>
+        <DeprecatedMethod>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </DeprecatedMethod>
+        <DeprecatedClass>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </DeprecatedClass>
+        <UndefinedGlobalVariable>
+            <errorLevel type="suppress">
+                <referencedVariable name="$APPLICATION" />
+                <referencedVariable name="$USER" />
+            </errorLevel>
+        </UndefinedGlobalVariable>
+
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+
+        <UndefinedConstant>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </UndefinedConstant>
+
+        <InvalidArgument>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </InvalidArgument>
+
+        <TooFewArguments>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </TooFewArguments>
+
+        <ArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </ArgumentTypeCoercion>
+
+        <LessSpecificReturnStatement>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </LessSpecificReturnStatement>
+
+        <UndefinedFunction>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </UndefinedFunction>
+
+        <UndefinedMagicPropertyFetch>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </UndefinedMagicPropertyFetch>
+
+        <UnresolvableInclude>
+            <errorLevel type="suppress">
+                <directory name="/"/>
+            </errorLevel>
+        </UnresolvableInclude>
+    </issueHandlers>
+</psalm>
